@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mymall?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: xwh12138
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      max-file-size:
+        100MB
+      max-request-size:
+        1000MB
+mybatis-plus:
+  mapper-locations: classpath:com/zhi/mymall/mapper/xml/*.xml
+server:
+  port: 9090
+files:
+  upload:
+    path: C:\Users\Patrick\Desktop\drink_mall\retailSystem\src\main\resources\static\img\
