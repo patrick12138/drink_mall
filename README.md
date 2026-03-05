@@ -1,23 +1,76 @@
-# 酒水饮料商城
+# Drink Mall
 
-#### 介绍
-主要实现的功能有：用户模块：用户注册、登录、添加收货地址，获取客户端IP和评价、订单显示。商品模块：商品详情显示、商品图片显示、商品SKU列表展示、商品评论分页显示。首页：分类及分类推荐、新品推荐、轮播图、商品名模糊搜索和全局导航栏。购物车：丰富的列表操作和显示。支付宝支付：扫码支付、订单状态定时改变和商品销量库存相应变化。商家后台：添加商品。
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
+A full-stack e-commerce demo focused on drinks and beverages.
 
+## Features
 
-#### 软件架构
-本项目采用前后端分离架构，主要应用了SpringBoot+Vue框架来实现，前端页面主要使用了ElementUI，数据库使用了MySQL数据库，通过MyBatisPlus提供的逆向工程（Mybatis Generator）动态生成实体类以及SQL语句。MyBatisPlus+MyBatis完成对数据库操作。
+- **User module**: user registration/login, shipping address management, client IP retrieval, reviews, and order display.
+- **Product module**: product details, product image display, SKU list, and paginated product reviews.
+- **Homepage**: category & recommendation sections, new arrivals, banner carousel, fuzzy product search, and global navigation bar.
+- **Shopping cart**: rich list display and operations.
+- **Alipay payment**: QR-code payment, scheduled order status updates, and sales/inventory synchronization.
+- **Merchant backend**: product management (including adding products).
 
+## Tech Stack
 
-#### 使用说明
+This project uses a front-end/back-end separation architecture:
 
-1.  vue目录下为前端项目，与src同级目录。进入vue目录执行npm i下载所需依赖。在vue/public/urlConfig.js文件中设置了axios请求基于的地址，可以修改成自己的后端地址。执行npm run serve运行项目
-2.  在项目的根路径（与src同级）执行mvn clean package -DskipTests跳过测试文件打包。修改application.yml文件中数据库连接配置和文件上传路径，AlipayClientConfig.java中修改支付公私钥，OrdersController.java修改支付回调接口和返回页面。
-3.  前端大部分图片显示的链接为后端的/Img，在WebConfig.java中可修改。前端可修改为:src="require('../img'+变量)"，此路径为vue项目下的img文件夹
+- **Backend**: Spring Boot
+- **Frontend**: Vue + Element UI (in `vue/`)
+- **Database**: MySQL
+- **ORM & SQL**: MyBatis-Plus + MyBatis (with MyBatis Generator for entity and SQL generation)
 
-#### 参与贡献
+## Project Structure
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+- `src/`: backend source code
+- `vue/`: frontend project
+
+## Getting Started
+
+### 1) Start the frontend
+
+```bash
+cd vue
+npm install
+npm run serve
+```
+
+You can configure the backend base URL in:
+
+- `vue/public/urlConfig.js`
+
+### 2) Build and run the backend
+
+From the project root (same level as `src`):
+
+```bash
+mvn clean package -DskipTests
+```
+
+Before running, update these settings as needed:
+
+- Database connection and file upload path in `application.yml`
+- Alipay public/private key config in `AlipayClientConfig.java`
+- Payment callback URL and return page in `OrdersController.java`
+
+### 3) Static resource/image path notes
+
+Most frontend image links are served from backend path `/Img`.
+
+- You can adjust backend mapping in `WebConfig.java`
+- Frontend can also switch to local image loading, for example:
+
+```vue
+:src="require('../img' + variable)"
+```
+
+(where `img` is inside the Vue project)
+
+## Contributing
+
+1. Fork this repository
+2. Create a feature branch (e.g. `feat_xxx`)
+3. Commit your changes
+4. Open a Pull Request
